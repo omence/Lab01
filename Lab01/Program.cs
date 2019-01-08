@@ -3,9 +3,9 @@
 namespace Lab01
 {
     class Program
-    {
+    {   //counter
         public static int totalCorrect = 0;
-
+        //game prompt and question method calls
         static void Main(string[] args)
         {
             
@@ -18,7 +18,7 @@ namespace Lab01
             Console.Write(totalCorrect);
         }
 
-
+        //question methods
         public static string QuestionOne() {
             string correct = "Yes you are correct! Press ENTER for next question";
             string incorrect = "No I was born in CA, press ENTER for next question";
