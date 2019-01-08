@@ -3,7 +3,9 @@
 namespace Lab01
 {
     class Program
-    {
+    {   //counter
+        public static int totalCorrect = 0;
+        //game prompt and question method calls
         static void Main(string[] args)
         {
             
@@ -13,24 +15,20 @@ namespace Lab01
             QuestionThree();
             QuestionFour();
             QuestionFive();
-            
+            Console.Write(totalCorrect);
         }
 
-        public static int ScoreCounter()
-        {
-            int totalCorrect = 0;
-            return totalCorrect ++;
-        }
-
+        //question methods
         public static string QuestionOne() {
-            string correct = "Yes you are correct!";
-            string incorrect = "No I was born in CA, Press ENTER for next question";
+            string correct = "Yes you are correct! Press ENTER for next question";
+            string incorrect = "No I was born in CA, press ENTER for next question";
             Console.WriteLine("What state was I born in, CA, FL or WA?");
             string answerOne = Console.ReadLine().ToUpper();
             if (answerOne == "CA")
             {
-                ScoreCounter();
+                totalCorrect++;
                 Console.WriteLine(correct);
+                Console.ReadLine();
                 return correct;
             }
             else Console.WriteLine(incorrect);
@@ -45,10 +43,12 @@ namespace Lab01
             int ansTwo = Convert.ToInt32(answerTwo);
             if (ansTwo == 39)
             {
+                totalCorrect++;
                 Console.WriteLine("Yes you are correct! Press ENTER for next question");
+                Console.ReadLine();
                 return ansTwo;
             }
-            else Console.WriteLine("No I am 39, Press ENTER for next question");
+            else Console.WriteLine("No I am 39, press ENTER for next question");
             Console.ReadLine();
             return ansTwo;
         }
@@ -60,10 +60,12 @@ namespace Lab01
             bool ansThree = Convert.ToBoolean(answerThree);
             if (ansThree == true)
             {
+                totalCorrect++;
                 Console.WriteLine("Yes you are correct! Press ENTER for next question");
+                Console.ReadLine();
                 return ansThree;
             }
-            else Console.WriteLine("No it is true I do have 3 dogs, Press ENTER for next question");
+            else Console.WriteLine("No it is true I do have 3 dogs, press ENTER for next question");
             Console.ReadLine();
             return ansThree;
         }
@@ -75,13 +77,15 @@ namespace Lab01
             bool ansFour = Convert.ToBoolean(answerFour);
             if (ansFour == false)
             {
+                totalCorrect++;
                 Console.WriteLine("Yes you are correct! Press ENTER for next question");
+                //Console.ReadLine();
             }
-            else Console.WriteLine("No I actually have 2 kids, Press ENTER for next question");
+            else Console.WriteLine("No I actually have 2 kids, press ENTER for next question");
             Console.ReadLine();
         }
 
-        public static void QuestionFive()
+        public static int QuestionFive()
         {
             Console.WriteLine("How long do you think I have been married, 5, 10 or 18 years?");
             string answerFive = Console.ReadLine();
@@ -90,14 +94,25 @@ namespace Lab01
                 int ansFive = Convert.ToInt32(answerFive);
                 if (ansFive == 18)
                 {
-                    Console.WriteLine("Yes you are correct! Thanks for playing, your score is");
+                    totalCorrect++;
+                    Console.WriteLine($"Yes you are correct! Thanks for playing, your score is {totalCorrect}");
+                    Console.ReadLine();
+                    return ansFive;
                 }
-                else Console.WriteLine("No I have been married 18 years. Thanks for playing, your score is");
+                else Console.WriteLine($"No I have been married 18 years. Thanks for playing, your score is {totalCorrect}");
                 Console.ReadLine();
+                return ansFive;
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+                return 0;
+            }
+            finally
+            {
+                Console.WriteLine("the end");
+                Console.ReadLine();
+
             }
         }
     }
