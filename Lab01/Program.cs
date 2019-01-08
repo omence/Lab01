@@ -15,14 +15,13 @@ namespace Lab01
             QuestionThree();
             QuestionFour();
             QuestionFive();
-            Console.Write(totalCorrect);
         }
 
         //question methods
         public static string QuestionOne() {
             string correct = "Yes you are correct! Press ENTER for next question";
             string incorrect = "No I was born in CA, press ENTER for next question";
-            Console.WriteLine("What state was I born in, CA, FL or WA?");
+            Console.WriteLine("What state was I born in CA, FL or WA?");
             string answerOne = Console.ReadLine().ToUpper();
             if (answerOne == "CA")
             {
@@ -106,12 +105,12 @@ namespace Lab01
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+                QuestionFive();
                 return 0;
             }
             finally
             {
                 Console.WriteLine("the end");
-                Console.ReadLine();
 
             }
         }
