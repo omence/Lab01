@@ -9,4 +9,4 @@ Click the run button
 
 What does the program look like? (visual)
 
-!{Picture}()
+![Picture](Screenshot%20(6).png)
