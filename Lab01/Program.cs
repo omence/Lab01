@@ -6,7 +6,7 @@ namespace Lab01
     {
         static void Main(string[] args)
         {
-            int totalCorrect = 0;
+            
             Console.WriteLine("Lets play a guessing game about me.");
             QuestionOne();
             QuestionTwo();
@@ -14,20 +14,31 @@ namespace Lab01
             QuestionFour();
             QuestionFive();
             
-    }
+        }
 
-        public static void QuestionOne() {
+        public static int ScoreCounter()
+        {
+            int totalCorrect = 0;
+            return totalCorrect ++;
+        }
+
+        public static string QuestionOne() {
+            string correct = "Yes you are correct!";
+            string incorrect = "No I was born in CA, Press ENTER for next question";
             Console.WriteLine("What state was I born in, CA, FL or WA?");
             string answerOne = Console.ReadLine().ToUpper();
             if (answerOne == "CA")
             {
-                Console.WriteLine("Yes you are correct! Press ENTER for next question");
+                ScoreCounter();
+                Console.WriteLine(correct);
+                return correct;
             }
-            else Console.WriteLine("No I was born in CA, Press ENTER for next question");
+            else Console.WriteLine(incorrect);
             Console.ReadLine();
+            return incorrect;
         }
 
-        public static void QuestionTwo()
+        public static int QuestionTwo()
         {
             Console.WriteLine("How old do you think I am");
             string answerTwo = Console.ReadLine();
@@ -35,12 +46,14 @@ namespace Lab01
             if (ansTwo == 39)
             {
                 Console.WriteLine("Yes you are correct! Press ENTER for next question");
+                return ansTwo;
             }
             else Console.WriteLine("No I am 39, Press ENTER for next question");
             Console.ReadLine();
+            return ansTwo;
         }
 
-        public static void QuestionThree()
+        public static bool QuestionThree()
         {
             Console.WriteLine("I have 3 dogs, True or False?");
             string answerThree = Console.ReadLine().ToLower();
@@ -48,9 +61,11 @@ namespace Lab01
             if (ansThree == true)
             {
                 Console.WriteLine("Yes you are correct! Press ENTER for next question");
+                return ansThree;
             }
             else Console.WriteLine("No it is true I do have 3 dogs, Press ENTER for next question");
             Console.ReadLine();
+            return ansThree;
         }
 
         public static void QuestionFour()
@@ -80,9 +95,9 @@ namespace Lab01
                 else Console.WriteLine("No I have been married 18 years. Thanks for playing, your score is");
                 Console.ReadLine();
             }
-            catch
+            catch (Exception e)
             {
-
+                Console.WriteLine(e.Message);
             }
         }
     }
