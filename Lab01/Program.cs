@@ -23,33 +23,46 @@ namespace Lab01
             string incorrect = "No I was born in CA, press ENTER for next question";
             Console.WriteLine("What state was I born in CA, FL or WA?");
             string answerOne = Console.ReadLine().ToUpper();
-            if (answerOne == "CA")
-            {
-                totalCorrect++;
-                Console.WriteLine(correct);
+
+                if (answerOne == "CA")
+                {
+                    totalCorrect++;
+                    Console.WriteLine(correct);
+                    Console.ReadLine();
+                    return correct;
+                }
+                else Console.WriteLine(incorrect);
                 Console.ReadLine();
-                return correct;
-            }
-            else Console.WriteLine(incorrect);
-            Console.ReadLine();
-            return incorrect;
+                return incorrect;
         }
+
+
 
         public static int QuestionTwo()
         {
-            Console.WriteLine("How old do you think I am");
+            Console.WriteLine("How old do you think I am?");
             string answerTwo = Console.ReadLine();
-            int ansTwo = Convert.ToInt32(answerTwo);
-            if (ansTwo == 39)
+            try
             {
-                totalCorrect++;
-                Console.WriteLine("Yes you are correct! Press ENTER for next question");
+                int ansTwo = Convert.ToInt32(answerTwo);
+                if (ansTwo == 39)
+                {
+                    totalCorrect++;
+                    Console.WriteLine($"Yes you are correct!");
+                    Console.ReadLine();
+                    return ansTwo;
+                }
+                else Console.WriteLine($"No I am 39 years old");
                 Console.ReadLine();
                 return ansTwo;
             }
-            else Console.WriteLine("No I am 39, press ENTER for next question");
-            Console.ReadLine();
-            return ansTwo;
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                QuestionTwo();
+                return 0;
+            }
+          
         }
 
         public static bool QuestionThree()
@@ -67,6 +80,8 @@ namespace Lab01
             else Console.WriteLine("No it is true I do have 3 dogs, press ENTER for next question");
             Console.ReadLine();
             return ansThree;
+
+
         }
 
         public static void QuestionFour()
